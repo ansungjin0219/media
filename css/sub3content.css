@@ -1,0 +1,189 @@
+/*               와이드 pc               */
+/* 공통 비주얼 영역 */
+.videoBox{width:100%;height:100%; overflow:hidden; position:absolute;}
+#imgBG{
+	position:fixed; /*고정=>fixed/ 스크롤처리=>absolute */
+   left:50%;
+   top:50%; /*오른쪽, 아래에 여백을 두지않고 꽉차게 표시*/
+   width:auto;
+   min-width:100%; /*동영상 너비를 꽉차게*/
+   height:auto;
+   min-height:100%; /*동영상 높이를 꽉차게*/
+  transform:translateX(-50%) translateY(-50%);
+   z-index:-100;
+}
+
+
+#content{width:100%; background:rgba(0,0,0,.8); box-sizing: border-box;
+padding: 0 100px 0 100px; overflow: hidden;}
+#content h2{position: absolute; top:250px; left: 50%; margin-left: -190px;
+font-family: 'Lobster', 'sans-serif'; font-size: 150px; color: #50b8a0;
+text-shadow: -1px 0px #fff, 0px 1px #fff, 1px 0px #fff, 0px -1px #fff;}
+/* #content h2::after{content: 'culture';} */
+/* animation:ani2 0.5s infinite  alternate; z-index: 3;
+@keyframes ani2 {
+  0% {top:250px;}
+  100% {top:240px}
+} */
+
+#content .ball{width: 90px; height: 90px; position: absolute; left:-5%; top:310px;
+opacity: 0; animation:ani3 1s infinite ease-in-out alternate; z-index: 2;
+transition: opacity 1s ease;}
+
+@keyframes ani3 {
+   0% {transform: translateY(-150px) rotate(0);}
+
+   20% { transform: translateY(0px) rotate(360deg);}
+
+   40% {transform: translateY(-150px) rotate(860deg)}
+
+   60% { transform: translateY(0px) rotate(1060deg)}
+
+   80% {transform: translateY(-150px) rotate(1860deg)}
+
+   100% { transform: translateY(0px) rotate(3600deg);}
+ }
+
+/* culture_nav 영역 */
+.culture_navbox>a{display: none;}
+.culture_nav{overflow: hidden; border: 2px solid #50b8a0; border-radius: 100px;
+  margin-top: 100px;
+padding: 0 10px; box-sizing: border-box;}
+.culture_nav li{text-align: center; margin: 10px 0; width: 25%;float: left;}
+.culture_nav li a{display: block; font-family: 'Lobster', 'sans-serif'; 
+font-size: 2.500vw; color: #fff; border-radius: 100px;
+padding: 8% 0;}
+.culture_nav li a strong{font-weight: 400;}
+.tab_a1{background: #50b8a0; padding: 20px 0;}
+/* section 영역 */
+section h3{font-family: 'Lobster', 'sans-serif'; font-size: 3.5rem;
+color: #50b8a0; margin-top: 100px; text-align: center;}
+section p{font-size: 1.250rem; text-align: center; margin-top: 50px;}
+section ul{margin-top: 100px; display: grid; 
+grid-template-rows: repeat(4, 1fr);
+grid-template-columns: repeat(4, 1fr);
+grid-template-areas: 
+'a a b b '
+'a a b b '
+'c c c c '
+'c c c c '
+
+}
+section ul li:nth-of-type(1){grid-area: a; width: 80%; justify-self: left;}
+section ul li:nth-of-type(1) dl{position: relative; left:100px; top:-100px;}
+section ul li:nth-of-type(2){grid-area: b; width: 80%; justify-self: right;
+margin-top: 250px;}
+section ul li:nth-of-type(2) dl{position: absolute; right: 100px; top:-200px;}
+section ul li:nth-of-type(3){grid-area: c; width: 50%; justify-self: center;
+margin: 50px 0 200px 0;}
+section ul li:nth-of-type(3) p{font-size: 1vw; margin: 30px 0 50px; color: #fff;}
+section ul li:nth-of-type(3) a i{font-size: 7vw; color: red;
+position: absolute; left: 40%; top:25%; transition: all 0.5s ease;}
+section ul li{position: relative;}
+section ul li:hover dl{box-shadow: 5px 5px 30px rgba(80,184,160,.8);}
+section ul li:hover img{filter: grayscale(1);}
+section ul li:hover a i{color: #50b8a0; transform: scale(1.2);}
+section ul li img{width: 100%; transition: all 0.5s ease;}
+section ul li dl{background: rgba(0,0,0,.8); overflow: hidden; 
+padding: 0 50px; width: 80%; transition: all 0.5s ease;}
+section ul li dt{font-size: 1.5vw; margin-top: 50px; color: #50b8a0;}
+section ul li dd{font-size: 1vw; margin: 30px 0 50px;}
+
+ 
+ /*               일반 pc                */
+@media screen and (max-width:1280px) {
+#content{padding: 0 50px 100px;}
+#content h2{margin-left: -160px; font-size: 130px;}
+#content .ball{width: 70px; height: 70px;}
+/* section 영역 */
+section ul li:nth-of-type(1) dl{left:50px; top:-100px;}
+section ul li:nth-of-type(2) dl{right: 50px; top:-200px;}
+section ul li:nth-of-type(3){margin: 100px 0 0 0;}
+section ul li:nth-of-type(3) p{font-size: 1.2vw;}
+section ul li:nth-of-type(3) a i{top:20%;}
+section ul li dt{font-size: 1.7vw;}
+section ul li dd{font-size: 1.2vw;}
+
+}
+
+/*             테블릿              */
+@media screen and (max-width:1024px) {
+html, body {font-size:16px;}
+#content h2{margin-left: -140px; font-size: 110px;}
+#content .ball{display: none;}
+/* section 영역 */
+.salsa ul li:nth-of-type(2) dl{top:-130px;}
+section ul li:nth-of-type(3) a i{top:18%;}
+section ul li dl{padding: 0 30px;}
+section ul li dt{margin-top: 30px;}
+section ul li dd{margin: 20px 0 30px;}
+
+}
+
+/*            소형 테블릿             */
+@media screen and (max-width:768px) {
+#content{padding:0 30px 100px;}
+#content h2{margin-left: -105px; font-size: 80px;}
+/* culture_nav 영역 */
+.culture_nav li a{font-size: 3vw;}
+/* section 영역 */
+section ul li:nth-of-type(1) dl{left:30px;}
+section ul li:nth-of-type(2) dl{right: 30px;}
+section ul li dt{font-size: 2vw;}
+section ul li dd{font-size: 1.5vw;}
+section ul li:nth-of-type(3) p{font-size: 1.5vw;}
+
+}
+
+/*             모바일              */
+@media screen and (max-width:640px) {
+html, body {font-size:14px;}
+#content{padding:0 15px 100px;}
+/* 비주얼스크롤아이콘 영역 */
+.down{font-size: 18px; left:50%; margin-left: -35px; bottom: 20%;}
+.down span{font-size: 30px;}
+/* culture_nav 영역 */
+.culture_navbox>a{display: block; border: 2px solid #50b8a0;
+padding: 20px 20px 20px 10%; margin-top: 70px; text-align: left; color: #fff;
+font-family: 'Lobster', 'sans-serif'; font-size: 4vw;
+border-radius: 100px; position: relative;}
+.culture_navbox>a span{display: block; position: absolute; right: 8%;
+top:17px; font-size: 6vw;}
+.culture_nav{overflow: hidden; background: transparent; border: 0;
+display: none; border-radius: 50px; margin-top: 0; padding: 0 10px;
+box-shadow: 10px 10px 30px rgba(80,184,160,.5);}
+.culture_nav li{text-align: center; margin: 0; width:auto; float: none;}
+.culture_nav li a{font-size: 3.8vw;  padding: 20px 0;}
+.culture_nav li:last-of-type a{padding-bottom: 40px;}
+/* section 영역 */
+section h3{margin-top: 50px;}
+section p{margin-top: 20px; font-size: 3vw;}
+section ul{display: block; margin-top: 70px;}
+section ul li:nth-of-type(1){width: 100%;}
+section ul li:nth-of-type(1) dl{position: relative; left:0; top:0;
+width: 100%; padding: 0;}
+section ul li:nth-of-type(2){width: 100%; margin-top: 0;}
+section ul li:nth-of-type(2) dl{position: relative; left: 0; top:0;
+width: 100%; padding: 0;}
+section ul li:nth-of-type(3){width: 100%; margin: 0;}
+section ul li:nth-of-type(3) p{font-size: 3vw; margin: 50px 0 50px; color: #fff;}
+section ul li dt{font-size: 3.5vw; margin-top: 50px; color: #50b8a0;
+padding: 0 30px;}
+section ul li dd{font-size: 3vw; margin: 20px 0 100px; padding: 0 30px;}
+section ul li:nth-of-type(3) a i{font-size: 15vw; left: 40%; top:23%;}
+}
+
+/*            최소 사이즈 처리             */
+@media screen and (max-width:480px) {
+#wrap {min-width:320px;}
+/* culture_nav 영역 */
+.culture_navbox>a{font-size: 6vw;}
+.culture_navbox>a span{font-size: 8vw;}
+.culture_nav li a{font-size: 5.8vw;}
+/* section 영역 */
+section p{font-size: 4vw;}
+section ul li dt{font-size: 4.5vw;}
+section ul li dd{font-size: 4vw;}
+section ul li:nth-of-type(3) p{font-size: 4vw;}
+section ul li:nth-of-type(3) a i{top:18%;}
+}
